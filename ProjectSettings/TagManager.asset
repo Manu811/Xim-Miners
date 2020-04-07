@@ -4,7 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Dirt
+  - Block
   layers:
   - Default
   - TransparentFX
