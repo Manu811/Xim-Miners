@@ -26,8 +26,8 @@ public class Detector : MonoBehaviour
         goDown = Input.GetKey(KeyCode.DownArrow);
         goLeft = Input.GetKey(KeyCode.LeftArrow);
         goRight = Input.GetKey(KeyCode.RightArrow);
-        float f1 = 0.5f;
-        float f2 = 0.5f;
+        float f1 = 0.4386f;
+        float f2 = 1.5f;
         if (goDown)
         {
             coll.offset = new Vector2(0, -1.3f);
