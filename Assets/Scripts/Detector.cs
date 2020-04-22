@@ -36,6 +36,7 @@ public class Detector : MonoBehaviour
                 coolDown = 0;
                 coll.offset = new Vector2(0, -1.1f);
                 Destroy(block);
+                character.transform.position = new Vector3(character.transform.position.x, character.transform.position.y - (float)4.5);
                 floor.transform.position = new Vector3(floor.transform.position.x, floor.transform.position.y - (float)4.5);
                 score++;
                 Debug.Log("Score: " + score);
