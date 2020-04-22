@@ -12,12 +12,15 @@ public class Detector : MonoBehaviour
     private GameObject block;
     private BoxCollider2D coll;
 
+    private int coolDown;
+
+    private int score;
     
     // Start is called before the first frame update
     void Start()
     {
         coll = gameObject.GetComponent<BoxCollider2D>();
-        
+        coolDown = 0;
     }
 
     // Update is called once per frame
@@ -26,32 +29,43 @@ public class Detector : MonoBehaviour
         goDown = Input.GetKey(KeyCode.DownArrow);
         goLeft = Input.GetKey(KeyCode.LeftArrow);
         goRight = Input.GetKey(KeyCode.RightArrow);
-        float f1 = 0.4386f;
-        float f2 = 1.5f;
-        if (goDown)
+        if(coolDown >= 25)
         {
-            coll.offset = new Vector2(0, -1.3f);
-            Destroy(block);
-            floor.transform.position = new Vector3(floor.transform.position.x, floor.transform.position.y - f1);
+            if (goDown)
+            {
+                coolDown = 0;
+                coll.offset = new Vector2(0, -1.1f);
+                Destroy(block);
+                floor.transform.position = new Vector3(floor.transform.position.x, floor.transform.position.y - (float)4.5);
+                score++;
+                Debug.Log("Score: " + score);
+            }
+            if (goLeft)
+            {
+                coolDown = 0;
+                coll.offset = new Vector2(-4, 0);
+                Destroy(block);
+                character.transform.position = new Vector3(character.transform.position.x - (float)4.5, character.transform.position.y);
+
+            }
+            if (goRight)
+            {
+                coolDown = 0;
+                coll.offset = new Vector2(4, 0);
+                Destroy(block);
+                character.transform.position = new Vector3(character.transform.position.x + (float)4.5, character.transform.position.y);
+            }
+            if (!goRight && !goLeft && !goDown)
+            {
+                coll.offset = new Vector2(0, 0);
+            }
         }
-        if (goLeft)
+        else
         {
-            coll.offset = new Vector2(-5, 0);
-            Destroy(block);
-            character.transform.position = new Vector3(character.transform.position.x - f2, character.transform.position.y);
-        }
-        if (goRight)
-        {
-            coll.offset = new Vector2(5, 0);
-            Destroy(block);
-            character.transform.position = new Vector3(character.transform.position.x + f2, character.transform.position.y);
-        }
-        if (!goRight && !goLeft && !goDown)
-        {
+            coolDown++;
             coll.offset = new Vector2(0, 0);
-            if (block != null)
-                block.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
         }
+        
 
     }
 
@@ -59,11 +73,8 @@ public class Detector : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Block"))
         {
-            if (block != null)
-                block.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
             block = collision.gameObject;
-            block.gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
         }
-        Debug.Log("Yeiiiiii :D choque contra: " + collision.gameObject.tag);
+        Debug.Log("Collision with: " + collision.gameObject.tag);
     }
 }
