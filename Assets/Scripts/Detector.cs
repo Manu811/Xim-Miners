@@ -18,12 +18,17 @@ public class Detector : MonoBehaviour
     private int coolDown;
 
     private int score;
-    
+
+    public GameObject emisorSonido;
+    public bool playSound;
+    private AudioSource source;
+
     // Start is called before the first frame update
     void Start()
     {
         coll = gameObject.GetComponent<BoxCollider2D>();
         coolDown = 0;
+        source = emisorSonido.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -32,10 +37,12 @@ public class Detector : MonoBehaviour
         goDown = Input.GetKey(KeyCode.DownArrow);
         goLeft = Input.GetKey(KeyCode.LeftArrow);
         goRight = Input.GetKey(KeyCode.RightArrow);
-        if(coolDown >= 25)
+        if (coolDown >= 25)
         {
             if (goDown)
             {
+                Sound();
+
                 coolDown = 0;
                 coll.offset = new Vector2(0, -1.1f);
                 Destroy(block);
@@ -43,6 +50,8 @@ public class Detector : MonoBehaviour
                 floor.transform.position = new Vector3(floor.transform.position.x, floor.transform.position.y - (float)4.5);
                 score++;
                 Debug.Log("Score: " + score);
+
+
             }
             if (goLeft)
             {
@@ -54,6 +63,7 @@ public class Detector : MonoBehaviour
             }
             if (goRight)
             {
+               
                 coolDown = 0;
                 coll.offset = new Vector2(4, 0);
                 Destroy(block);
@@ -61,6 +71,7 @@ public class Detector : MonoBehaviour
             }
             if (!goRight && !goLeft && !goDown)
             {
+               
                 coll.offset = new Vector2(0, 0);
             }
         }
@@ -69,7 +80,7 @@ public class Detector : MonoBehaviour
             coolDown++;
             coll.offset = new Vector2(0, 0);
         }
-        
+       
 
     }
 
@@ -78,8 +89,18 @@ public class Detector : MonoBehaviour
         if (collision.gameObject.tag.Equals("Block"))
         {
             block = collision.gameObject;
+            source.Play();
         }
         Debug.Log("Collision with: " + collision.gameObject.tag);
+    }
+
+    private void Sound()
+    {
+        if (playSound && !source.isPlaying)
+        {
+            source.Play();
+        }
+        
     }
 
     public void Pausa()
@@ -88,4 +109,7 @@ public class Detector : MonoBehaviour
         SceneManager.LoadScene("Pausa");
 
     }
+
+    
 }
+  
