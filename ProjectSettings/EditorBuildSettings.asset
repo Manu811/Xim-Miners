@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/Menu.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Pausa.unity
+    guid: 506c0a3f10fcf1443aed85337c012008
+  - enabled: 1
+    path: Assets/Scenes/Xim-Miners.unity
+    guid: 2bf35a08014040f43afb6e669ab0ef63
   m_configObjects: {}

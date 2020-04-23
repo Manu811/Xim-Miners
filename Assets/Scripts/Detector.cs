@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class Detector : MonoBehaviour
 {
@@ -77,5 +80,12 @@ public class Detector : MonoBehaviour
             block = collision.gameObject;
         }
         Debug.Log("Collision with: " + collision.gameObject.tag);
+    }
+
+    public void Pausa()
+    {
+        Debug.Log("Apretaste Pausa");
+        SceneManager.LoadScene("Pausa");
+
     }
 }

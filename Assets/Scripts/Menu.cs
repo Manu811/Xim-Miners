@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class Menu : MonoBehaviour
 {
-    public GameObject toggle;
+ 
     public GameObject inputText;
-    public GameObject dropdown;
+
     public GameObject emisorSonido;
 
     public bool playSound;
@@ -24,13 +25,9 @@ public class Menu : MonoBehaviour
     public void Jugar()
     {
         Debug.Log("Apretaste Jugar");
-    }
+        SceneManager.LoadScene("Xim-Miners");
 
-   /*public void LeDisteClick()
-    {
-        bool activo = toggle.GetComponent<Toggle>().IsOn;
-        Debug.Log("Cambio de opcion en toggle es: " +activo);
-    }*/
+    }
 
     public void NombraTuMinero()
     {
