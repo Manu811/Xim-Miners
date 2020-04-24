@@ -91,7 +91,7 @@ public class Detector : MonoBehaviour
             block = collision.gameObject;
             source.Play();
         }
-        Debug.Log("Collision with: " + collision.gameObject.tag);
+        //Debug.Log("Collision with: " + collision.gameObject.tag);
     }
 
     private void Sound()
