@@ -35,6 +35,12 @@ public class Menu : MonoBehaviour
         Debug.Log("EL NOMBRE DE TU MINERO ES:"+ nombre);
     }
 
+    public void Salir()
+    {
+        
+        Debug.Log("SALIR");
+    }
+
     public void Update()
     {
         if(playSound && !source.isPlaying) //si le di click y no se esta reproduciendo

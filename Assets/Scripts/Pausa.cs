@@ -16,7 +16,9 @@ public class Pausa: MonoBehaviour
     public void Start()
     {
         source = emisorSonido.GetComponent<AudioSource>();
-       
+        Time.timeScale = 1f;
+
+
 
     }
 

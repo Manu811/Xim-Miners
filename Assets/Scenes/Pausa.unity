@@ -464,7 +464,7 @@ PrefabInstance:
     - target: {fileID: 5332288811162951802, guid: f24c49bdd1eb6ac4fb76b160059fc932,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -245
+      value: -202
       objectReference: {fileID: 0}
     - target: {fileID: 5332288811162951802, guid: f24c49bdd1eb6ac4fb76b160059fc932,
         type: 3}
@@ -811,7 +811,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 3
-  m_Text: Resumen
+  m_Text: Reiniciar
 --- !u!222 &1353822635
 CanvasRenderer:
   m_ObjectHideFlags: 0
