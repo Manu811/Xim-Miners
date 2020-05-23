@@ -639,7 +639,7 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
-    Collab: 1
+    Collab: 0
     UNet: 1
   luminIcon:
     m_Name: 
@@ -653,10 +653,10 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 6
-  cloudProjectId: 166c4a89-0406-4272-b458-0194ebc6a794
+  cloudProjectId: 0fb17fd6-35b1-46d0-9ae0-70a131cb16b3
   framebufferDepthMemorylessMode: 0
   projectName: Xim-Miners
-  organizationId: ximehutchinson
+  organizationId: herr_manu
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

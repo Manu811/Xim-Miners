@@ -12,6 +12,8 @@ public class Detector : MonoBehaviour
     public bool goRight;
     public GameObject floor;
     public GameObject character;
+    public GameObject leftWall;
+    public GameObject rightWall;
     private GameObject block;
     private BoxCollider2D coll;
 
@@ -37,7 +39,7 @@ public class Detector : MonoBehaviour
         goDown = Input.GetKey(KeyCode.DownArrow);
         goLeft = Input.GetKey(KeyCode.LeftArrow);
         goRight = Input.GetKey(KeyCode.RightArrow);
-        if (coolDown >= 25)
+        if (coolDown >= 75)
         {
             if (goDown)
             {
@@ -91,7 +93,7 @@ public class Detector : MonoBehaviour
             block = collision.gameObject;
             source.Play();
         }
-        //Debug.Log("Collision with: " + collision.gameObject.tag);
+        Debug.Log("Collision with: " + collision.gameObject.tag);
     }
 
     private void Sound()
@@ -107,9 +109,6 @@ public class Detector : MonoBehaviour
     {
         Debug.Log("Apretaste Pausa");
         SceneManager.LoadScene("Pausa");
-
     }
-
-    
 }
   
