@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Xim-Miners.unity
     guid: 2bf35a08014040f43afb6e669ab0ef63
+  - enabled: 1
+    path: Assets/Scenes/ComoJugar.unity
+    guid: 720a61d83a474c1429743f9d68a1f716
   m_configObjects: {}

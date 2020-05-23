@@ -37,8 +37,13 @@ public class Menu : MonoBehaviour
 
     public void Salir()
     {
-        
+        Application.Quit();
         Debug.Log("SALIR");
+    }
+    public void Instrucciones()
+    {
+        SceneManager.LoadScene("ComoJugar");
+        Debug.Log("¿Como jugar?");
     }
 
     public void Update()

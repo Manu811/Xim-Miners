@@ -34,7 +34,11 @@ public class Pausa: MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
-
+    public void Instrucciones()
+    {
+        SceneManager.LoadScene("ComoJugar");
+        Debug.Log("¿Como jugar?");
+    }
 
 
 }
