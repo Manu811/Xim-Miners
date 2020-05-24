@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+using UnityEditor;
 
 public class Detector : MonoBehaviour
 {
@@ -17,6 +17,7 @@ public class Detector : MonoBehaviour
     private GameObject block;
     private BoxCollider2D coll;
 
+    public int speed = 50;
     private int coolDown;
 
     private int score;
@@ -25,10 +26,23 @@ public class Detector : MonoBehaviour
     public bool playSound;
     private AudioSource source;
 
+    private SpriteRenderer spriteRenderer;
+    public Sprite newSprite;
+
+    public Lives canvas_lives;
+    public int vida = 3;
+
+    void ChangeSprite()
+    {
+        spriteRenderer.sprite = newSprite;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        canvas_lives = GameObject.FindObjectOfType<Lives>();
         coll = gameObject.GetComponent<BoxCollider2D>();
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         coolDown = 0;
         source = emisorSonido.GetComponent<AudioSource>();
     }
@@ -36,10 +50,11 @@ public class Detector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        canvas_lives.cambioVida(vida);
         goDown = Input.GetKey(KeyCode.DownArrow);
         goLeft = Input.GetKey(KeyCode.LeftArrow);
         goRight = Input.GetKey(KeyCode.RightArrow);
-        if (coolDown >= 75)
+        if (coolDown >= speed)
         {
             if (goDown)
             {
@@ -47,33 +62,32 @@ public class Detector : MonoBehaviour
 
                 coolDown = 0;
                 coll.offset = new Vector2(0, -1.1f);
-                Destroy(block);
                 character.transform.position = new Vector3(character.transform.position.x, character.transform.position.y - (float)4.5);
                 floor.transform.position = new Vector3(floor.transform.position.x, floor.transform.position.y - (float)4.5);
+                coll.offset = new Vector2(0, 0);
                 score++;
                 Debug.Log("Score: " + score);
-
 
             }
             if (goLeft)
             {
                 coolDown = 0;
                 coll.offset = new Vector2(-4, 0);
-                Destroy(block);
                 character.transform.position = new Vector3(character.transform.position.x - (float)4.5, character.transform.position.y);
+                coll.offset = new Vector2(0, 0);
 
             }
             if (goRight)
             {
-               
+
                 coolDown = 0;
                 coll.offset = new Vector2(4, 0);
-                Destroy(block);
                 character.transform.position = new Vector3(character.transform.position.x + (float)4.5, character.transform.position.y);
+                coll.offset = new Vector2(0, 0);
             }
             if (!goRight && !goLeft && !goDown)
             {
-               
+
                 coll.offset = new Vector2(0, 0);
             }
         }
@@ -82,7 +96,7 @@ public class Detector : MonoBehaviour
             coolDown++;
             coll.offset = new Vector2(0, 0);
         }
-       
+
 
     }
 
@@ -91,9 +105,11 @@ public class Detector : MonoBehaviour
         if (collision.gameObject.tag.Equals("Block"))
         {
             block = collision.gameObject;
+            spriteRenderer = block.GetComponent<SpriteRenderer>();
+            ChangeSprite();
+            Destroy(block);
             source.Play();
         }
-        Debug.Log("Collision with: " + collision.gameObject.tag);
     }
 
     private void Sound()
@@ -102,7 +118,7 @@ public class Detector : MonoBehaviour
         {
             source.Play();
         }
-        
+
     }
 
     public void Pausa()
@@ -111,4 +127,3 @@ public class Detector : MonoBehaviour
         SceneManager.LoadScene("Pausa");
     }
 }
-  
