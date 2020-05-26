@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 
 
 public class Pausa: MonoBehaviour
-
-
 {
     public GameObject emisorSonido;
     private AudioSource source;
@@ -17,9 +15,6 @@ public class Pausa: MonoBehaviour
     {
         source = emisorSonido.GetComponent<AudioSource>();
         Time.timeScale = 1f;
-
-
-
     }
 
     public void Jugar()

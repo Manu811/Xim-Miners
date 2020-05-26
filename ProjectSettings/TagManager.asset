@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Block
   - Pared
+  - Water
+  - Gold
+  - Silver
+  - Iron
+  - Diamond
   layers:
   - Default
   - TransparentFX

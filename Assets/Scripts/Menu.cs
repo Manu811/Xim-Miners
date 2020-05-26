@@ -10,15 +10,15 @@ public class Menu : MonoBehaviour
  
     public GameObject inputText;
 
-    public GameObject emisorSonido;
+    //public GameObject emisorSonido;
 
     public bool playSound;
-
+    public static string nombre;
     private AudioSource source;
 
     public void Start()
     {
-        source = emisorSonido.GetComponent<AudioSource>();
+       // source = emisorSonido.GetComponent<AudioSource>();
     }
 
 
@@ -31,7 +31,7 @@ public class Menu : MonoBehaviour
 
     public void NombraTuMinero()
     {
-        string nombre = inputText.GetComponent<InputField>().text;
+        nombre = inputText.GetComponent<InputField>().text;
         Debug.Log("EL NOMBRE DE TU MINERO ES:"+ nombre);
     }
 
@@ -45,11 +45,15 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene("ComoJugar");
         Debug.Log("¿Como jugar?");
     }
-
+    public void Regresar()
+    {
+        SceneManager.LoadScene("Menu");
+        Debug.Log("¿Regresar?");
+    }
     public void Update()
     {
-        if(playSound && !source.isPlaying) //si le di click y no se esta reproduciendo
-        source.Play();
+       // if(playSound && !source.isPlaying) //si le di click y no se esta reproduciendo
+       // source.Play();
     }
 
 }
