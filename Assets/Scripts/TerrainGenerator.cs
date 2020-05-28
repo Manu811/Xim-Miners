@@ -35,9 +35,28 @@ public class TerrainGenerator : MonoBehaviour
 
     private void SpawnTerrainPart()
     {
-        Transform chosenGrid = GridList[Random.Range(0, GridList.Count)];
-        Transform lastTPT = SpawnTerrainPart(chosenGrid, lastEndPosition);
-        lastEndPosition = lastTPT.Find("EndPos").position;
+
+        if (MetersScript.metersValue < 200)
+        {
+            Transform chosenGrid = GridList[Random.Range(0, 19)];
+            Transform lastTPT = SpawnTerrainPart(chosenGrid, lastEndPosition);
+            lastEndPosition = lastTPT.Find("EndPos").position;
+        }
+        if (MetersScript.metersValue > 200 && MetersScript.metersValue < 500)
+        {
+            Transform chosenGrid = GridList[Random.Range(20, 39)];
+            Transform lastTPT = SpawnTerrainPart(chosenGrid, lastEndPosition);
+            lastEndPosition = lastTPT.Find("EndPos").position;
+        }
+        if (MetersScript.metersValue > 500)
+        {
+            Transform chosenGrid = GridList[Random.Range(40, 54)];
+            Transform lastTPT = SpawnTerrainPart(chosenGrid, lastEndPosition);
+            lastEndPosition = lastTPT.Find("EndPos").position;
+        }
+
+
+
     }
 
     private Transform SpawnTerrainPart(Transform Grid_part, Vector3 spawnPos)

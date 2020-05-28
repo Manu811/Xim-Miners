@@ -13,6 +13,6 @@ class CreateMessageBoxOnStart : MonoBehaviour {
        // MessageBoxCreator.CreateMessageBox(myStyle);
 
         //This would create a message box and override the text whilst keeping to the style.
-        MessageBoxCreator.CreateMessageBox(myStyle, "Bienvenido(a): "+Menu.nombre, "La compañia Xim-Miners puso unas vigas para delimitar la zona en la que tienes que minar. Mucha Suerte ", "Aceptar");
+        MessageBoxCreator.CreateMessageBox(myStyle, "Bienvenido(a): "+Menu.nombre, "La compañia Xim-Miners puso unas vigas para delimitar la zona en la que tienes que minar. Recuerda no permanecer mucho tiempo en el agua, ten cuidado con la lava, y no respires el gas tóxico. Mucha Suerte.", "Aceptar");
     }
 }

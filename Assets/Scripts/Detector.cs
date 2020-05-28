@@ -7,16 +7,20 @@ using UnityEditor;
 
 public class Detector : MonoBehaviour
 {
+    public Lives canvas_lives;
+    public static int vida = 3;
+    public static bool move;
+    public static bool death;
+    public static bool pause;
     public bool goDown;
     public bool goLeft;
     public bool goRight;
     public GameObject floor;
-    public GameObject ceiling;
     public GameObject character;
     private GameObject block;
     private BoxCollider2D coll;
 
-    public int speed = 10;
+    public int speed;
     private int coolDown;
 
     public GameObject emisorSonido;
@@ -26,6 +30,7 @@ public class Detector : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     public Sprite newSprite;
 
+    public bool plata, oro, diamante;
     
     void ChangeSprite()
     {
@@ -35,6 +40,12 @@ public class Detector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        plata = false;
+        oro = false;
+        diamante = false;
+        speed = 70;
+        canvas_lives = GameObject.FindObjectOfType<Lives>();
+        death = false;
         coll = gameObject.GetComponent<BoxCollider2D>();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         coolDown = 0;
@@ -45,58 +56,64 @@ public class Detector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        StatusEffect.move = false;
-        goDown = Input.GetKey(KeyCode.DownArrow);
-        goLeft = Input.GetKey(KeyCode.LeftArrow);
-        goRight = Input.GetKey(KeyCode.RightArrow);
-        if (coolDown >= speed)
+        SendMessage("sonidoMuerteXime", false);
+        canvas_lives.cambioVida(vida);
+        if (!death && !pause)
         {
-            if (goDown)
+            move = false;
+            WaterEffect.move = false;
+            goDown = Input.GetKey(KeyCode.DownArrow);
+            goLeft = Input.GetKey(KeyCode.LeftArrow);
+            goRight = Input.GetKey(KeyCode.RightArrow);
+            if (coolDown >= speed)
             {
-                Sound();
-                coolDown = 0;
-                StatusEffect.move = true;
-                coll.offset = new Vector2(0, -1.1f);
-                character.transform.position = new Vector3(character.transform.position.x, character.transform.position.y - (float)4.5);
-                floor.transform.position = new Vector3(floor.transform.position.x, floor.transform.position.y - (float)4.5);
-                ceiling.transform.position = new Vector3(ceiling.transform.position.x, ceiling.transform.position.y - (float)4.5);
-                coll.offset = new Vector2(0, 0);
-                //MaterialsScript.silver = MaterialsScript.silver + 1;
+                if (goDown)
+                {
+                    Sound();
+                    coolDown = 0;
+                    move = true;
+                    WaterEffect.move = true;
+                    coll.offset = new Vector2(0, -1.1f);
+                    character.transform.position = new Vector3(character.transform.position.x, character.transform.position.y - (float)4.5);
+                    floor.transform.position = new Vector3(floor.transform.position.x, floor.transform.position.y - (float)4.5);
+                    coll.offset = new Vector2(0, 0);
 
-                Score.scoreValue = Score.scoreValue + 2;
-                MetersScript.metersValue = MetersScript.metersValue + 2;
+                    Score.scoreValue = Score.scoreValue + 2;
+                    MetersScript.metersValue = MetersScript.metersValue + 2;
 
-            }
-            if (goLeft)
-            {
-                coolDown = 0;
-                StatusEffect.move = true;
-                coll.offset = new Vector2(-4, 0);
-                character.transform.position = new Vector3(character.transform.position.x - (float)4.5, character.transform.position.y);
-                coll.offset = new Vector2(0, 0);
-                
+                }
+                if (goLeft)
+                {
+                    coolDown = 0;
+                    move = true;
+                    WaterEffect.move = true;
+                    coll.offset = new Vector2(-4, 0);
+                    character.transform.position = new Vector3(character.transform.position.x - (float)4.5, character.transform.position.y);
+                    coll.offset = new Vector2(0, 0);
 
+
+                }
+                if (goRight)
+                {
+                    coolDown = 0;
+                    move = true;
+                    WaterEffect.move = true;
+                    coll.offset = new Vector2(4, 0);
+                    character.transform.position = new Vector3(character.transform.position.x + (float)4.5, character.transform.position.y);
+                    coll.offset = new Vector2(0, 0);
+                }
+                if (!goRight && !goLeft && !goDown)
+                {
+                    coll.offset = new Vector2(0, 0);
+                }
             }
-            if (goRight)
+            else
             {
-                coolDown = 0;
-                StatusEffect.move = true;
-                coll.offset = new Vector2(4, 0);
-                character.transform.position = new Vector3(character.transform.position.x + (float)4.5, character.transform.position.y);
+                coolDown++;
                 coll.offset = new Vector2(0, 0);
             }
-            if (!goRight && !goLeft && !goDown)
-            {
-                coll.offset = new Vector2(0, 0);
-            }
+
         }
-        else
-        {
-            coolDown++;
-            coll.offset = new Vector2(0, 0);
-        }
-
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -109,15 +126,6 @@ public class Detector : MonoBehaviour
             Destroy(block);
             source.Play();
         }
-        if (collision.gameObject.tag.Equals("Silver"))
-        {
-            block = collision.gameObject;
-            spriteRenderer = block.GetComponent<SpriteRenderer>();
-            ChangeSprite();
-            Destroy(block);
-            source.Play();
-            silverScript.material = silverScript.material + 1;
-        }
         if (collision.gameObject.tag.Equals("Bronze"))
         {
             block = collision.gameObject;
@@ -125,7 +133,42 @@ public class Detector : MonoBehaviour
             ChangeSprite();
             Destroy(block);
             source.Play();
-            BronzeScript.material = BronzeScript.material + 1;
+
+            if (BronzeScript.material < 4)
+            {
+                BronzeScript.material = BronzeScript.material + 1;
+                if(BronzeScript.material == 4 && !plata && !oro && !diamante)
+                {
+                    speed = 60;
+                    ControladorMovimiento.tipoPico = 2;
+                }
+            }
+            else
+            {
+                Score.scoreValue += 5;
+            }
+        }
+        if (collision.gameObject.tag.Equals("Silver"))
+        {
+            block = collision.gameObject;
+            spriteRenderer = block.GetComponent<SpriteRenderer>();
+            ChangeSprite();
+            Destroy(block);
+            source.Play();
+            if (silverScript.material < 6)
+            {
+                silverScript.material = silverScript.material + 1;
+                if (silverScript.material == 6 && !oro && !diamante)
+                {
+                    plata = true;
+                    speed = 50;
+                    ControladorMovimiento.tipoPico = 3;
+                }
+            }
+            else
+            {
+                Score.scoreValue += 10;
+            }
         }
         if (collision.gameObject.tag.Equals("Gold"))
         {
@@ -134,16 +177,65 @@ public class Detector : MonoBehaviour
             ChangeSprite();
             Destroy(block);
             source.Play();
-            GoldScript.material = GoldScript.material + 1;
+
+            if (GoldScript.material < 8)
+            {
+                GoldScript.material = GoldScript.material + 1;
+                if (GoldScript.material == 8 && !diamante)
+                {
+                    plata = false;
+                    oro = true;
+                    speed = 30;
+                    ControladorMovimiento.tipoPico = 4;
+                }
+            }
+            else
+            {
+                Score.scoreValue += 30;
+            }
         }
         if (collision.gameObject.tag.Equals("Diamond"))
         {
             block = collision.gameObject;
             spriteRenderer = block.GetComponent<SpriteRenderer>();
             ChangeSprite();
-            Destroy(block);
+            
             source.Play();
-            DiamondScript.material = DiamondScript.material + 1;
+            if(DiamondScript.material < 10)
+            {
+                DiamondScript.material = DiamondScript.material + 1;
+                if (DiamondScript.material == 10)
+                {
+                    plata = false;
+                    oro = false;
+                    diamante = true;
+                    speed = 15;
+                    ControladorMovimiento.tipoPico = 5;
+                }
+            }
+            else
+            {
+                Score.scoreValue += 50;
+            }
+        }
+        
+        if (collision.gameObject.tag.Equals("silverGem"))
+        {
+            block = collision.gameObject;
+            Destroy(block);
+            Score.scoreValue += 10;
+        }
+        if (collision.gameObject.tag.Equals("goldGem"))
+        {
+            block = collision.gameObject;
+            Destroy(block);
+            Score.scoreValue += 30;
+        }
+        if (collision.gameObject.tag.Equals("diamondGem"))
+        {
+            block = collision.gameObject;
+            Destroy(block);
+            Score.scoreValue += 50;
         }
     }
 

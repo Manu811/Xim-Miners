@@ -5,17 +5,25 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 
+
 public class Pausa: MonoBehaviour
 {
     public GameObject emisorSonido;
     private AudioSource source;
+  
+  
+
 
 
     public void Start()
     {
         source = emisorSonido.GetComponent<AudioSource>();
         Time.timeScale = 1f;
+    
+      
+
     }
+
 
     public void Jugar()
     {
@@ -34,6 +42,7 @@ public class Pausa: MonoBehaviour
         SceneManager.LoadScene("ComoJugar");
         Debug.Log("¿Como jugar?");
     }
+
 
 
 }

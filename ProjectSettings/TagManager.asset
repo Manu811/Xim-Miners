@@ -9,8 +9,13 @@ TagManager:
   - Water
   - Gold
   - Silver
-  - Iron
   - Diamond
+  - Bronze
+  - Lava
+  - Gas
+  - goldGem
+  - silverGem
+  - diamondGem
   layers:
   - Default
   - TransparentFX

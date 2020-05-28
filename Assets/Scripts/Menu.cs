@@ -8,17 +8,22 @@ using UnityEngine.SceneManagement;
 public class Menu : MonoBehaviour
 {
  
-    public GameObject inputText;
+   public GameObject inputText;
+   public GameObject status;
 
     //public GameObject emisorSonido;
 
     public bool playSound;
     public static string nombre;
     private AudioSource source;
+    GameObject inGameToggle;
 
     public void Start()
     {
-       // source = emisorSonido.GetComponent<AudioSource>();
+        // source = emisorSonido.GetComponent<AudioSource>();
+        inGameToggle = GameObject.Find("Status2");
+        Debug.Log(inGameToggle);
+        status.GetComponent<Toggle>().isOn = !inGameToggle;
     }
 
 
@@ -31,8 +36,11 @@ public class Menu : MonoBehaviour
 
     public void NombraTuMinero()
     {
-        nombre = inputText.GetComponent<InputField>().text;
-        Debug.Log("EL NOMBRE DE TU MINERO ES:"+ nombre);
+       
+            nombre = inputText.GetComponent<InputField>().text;
+            Debug.Log("EL NOMBRE DE TU MINERO ES:" + nombre);
+        
+       
     }
 
     public void Salir()
@@ -50,10 +58,24 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene("Menu");
         Debug.Log("¿Regresar?");
     }
-    public void Update()
+    public void Sound()
     {
-       // if(playSound && !source.isPlaying) //si le di click y no se esta reproduciendo
-       // source.Play();
+        bool estado = status.GetComponent<Toggle>().isOn;
+        Debug.Log("Con Sonido:"+estado);
+        //gameObject.SendMessage("setSound", estado);
+        if (estado == false)
+        {
+            AudioListener.volume = 0;
+        }
+        if (estado == true)
+        {
+            AudioListener.volume = 1;
+        }
+
     }
+   /* public void Update()
+    {
+      
+    }*/
 
 }
