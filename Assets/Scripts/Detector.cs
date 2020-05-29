@@ -183,8 +183,8 @@ public class Detector : MonoBehaviour
                 GoldScript.material = GoldScript.material + 1;
                 if (GoldScript.material == 8 && !diamante)
                 {
-                    plata = false;
                     oro = true;
+                    plata = false;
                     speed = 30;
                     ControladorMovimiento.tipoPico = 4;
                 }
@@ -206,9 +206,9 @@ public class Detector : MonoBehaviour
                 DiamondScript.material = DiamondScript.material + 1;
                 if (DiamondScript.material == 10)
                 {
-                    plata = false;
-                    oro = false;
                     diamante = true;
+                    oro = false;
+                    plata = false;
                     speed = 15;
                     ControladorMovimiento.tipoPico = 5;
                 }

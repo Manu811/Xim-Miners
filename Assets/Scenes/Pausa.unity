@@ -284,7 +284,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   emisorSonido: {fileID: 473854018}
-  status: {fileID: 0}
 --- !u!1 &473854018
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,12 +432,12 @@ PrefabInstance:
     - target: {fileID: 5332288811162951802, guid: f24c49bdd1eb6ac4fb76b160059fc932,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -638
+      value: -489.3
       objectReference: {fileID: 0}
     - target: {fileID: 5332288811162951802, guid: f24c49bdd1eb6ac4fb76b160059fc932,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -272
+      value: -195.7
       objectReference: {fileID: 0}
     - target: {fileID: 5332288811162951802, guid: f24c49bdd1eb6ac4fb76b160059fc932,
         type: 3}
@@ -527,7 +526,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 936291857}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -449, y: -140, z: 39}
+  m_LocalPosition: {x: -300.3, y: -63.699997, z: 39}
   m_LocalScale: {x: 80.77574, y: 76.06039, z: 1.1563563}
   m_Children: []
   m_Father: {fileID: 1442513418}
@@ -994,7 +993,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1783357875}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -447.7, y: -224.3, z: 71}
+  m_LocalPosition: {x: -299, y: -148, z: 71}
   m_LocalScale: {x: 130, y: 70, z: 1.1047}
   m_Children: []
   m_Father: {fileID: 1442513418}

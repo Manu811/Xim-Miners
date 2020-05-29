@@ -133,6 +133,8 @@ GameObject:
   - component: {fileID: 407100728}
   - component: {fileID: 407100727}
   - component: {fileID: 407100726}
+  - component: {fileID: 407100731}
+  - component: {fileID: 407100730}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -221,6 +223,42 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &407100730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 407100725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &407100731
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 407100725}
+  m_CullTransparentMesh: 0
 --- !u!1 &687381091
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,7 +413,7 @@ RectTransform:
   m_GameObject: {fileID: 821946581}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.87501, y: 0.82499, z: 1}
   m_Children: []
   m_Father: {fileID: 1233997295}
   m_RootOrder: 0
@@ -405,14 +443,14 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 60
+    m_FontSize: 40
     m_FontStyle: 1
     m_BestFit: 1
     m_MinSize: 2
     m_MaxSize: 60
     m_Alignment: 4
     m_AlignByGeometry: 0
-    m_RichText: 0
+    m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 3
@@ -452,15 +490,15 @@ RectTransform:
   m_GameObject: {fileID: 1184411358}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5.9544497, y: 4.041723, z: 1}
+  m_LocalScale: {x: 3.0446775, y: 1.6670895, z: 1}
   m_Children: []
   m_Father: {fileID: 407100729}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0019302, y: -4.3205}
-  m_SizeDelta: {x: 251.91, y: 189.2}
+  m_AnchoredPosition: {x: -77.806, y: -2}
+  m_SizeDelta: {x: 343, y: 368.46}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1184411360
 MonoBehaviour:
@@ -480,7 +518,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 21ad181779ebe0144be4102c6c08920e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9d68be7ceebff01489facf81ac8677c4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -534,8 +572,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 283.98, y: -299.6}
-  m_SizeDelta: {x: 315, y: 105}
+  m_AnchoredPosition: {x: 435.7, y: -229.6}
+  m_SizeDelta: {x: 271.5, y: 105}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1233997296
 MonoBehaviour:
@@ -703,8 +741,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1780127963}
   - component: {fileID: 1780127962}
-  - component: {fileID: 1780127964}
   - component: {fileID: 1780127961}
+  - component: {fileID: 1780127964}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -786,8 +824,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1780127960}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab63a8d15bfab4443bbc26608f00b5e1, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c71826fd706aea408fff4fafd634280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputText: {fileID: 0}
-  playSound: 0

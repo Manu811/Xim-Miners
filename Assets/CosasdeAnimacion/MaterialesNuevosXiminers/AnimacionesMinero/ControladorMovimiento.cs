@@ -67,6 +67,10 @@ public class ControladorMovimiento : MonoBehaviour
         {
             anim.SetBool("animacionPicoBronze", true);
         }
+        if(animacion == 3)
+        {
+            anim.SetBool("animacionPicoPlata", true);
+        }
         if(animacion == 4)
         {
             anim.SetBool("animacionPicoOro", true);
@@ -82,6 +86,7 @@ public class ControladorMovimiento : MonoBehaviour
             anim.SetBool("animacionPicoOro", false);
             anim.SetBool("animacionPicoDiamante", false);
             anim.SetBool("animacionPicoBronze", false);
+            anim.SetBool("animacionPicoPlata", false);
         }
     }
 }
