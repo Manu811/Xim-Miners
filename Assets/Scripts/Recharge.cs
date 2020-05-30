@@ -7,7 +7,6 @@ public class Recharge : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Detector.pause = false;
         Detector.death = false;
         ContinueScript.death = false;
         Time.timeScale = 1f;

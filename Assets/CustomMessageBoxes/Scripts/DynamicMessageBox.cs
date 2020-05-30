@@ -18,6 +18,7 @@ public class DynamicMessageBox : MonoBehaviour
         void DeleteThisMessageBox()
         {
             Destroy(gameObject);
+            Detector.pause = false;
         }
     }
 }

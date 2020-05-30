@@ -97810,7 +97810,7 @@ GameObject:
   - component: {fileID: 7108846803158587426}
   m_Layer: 0
   m_Name: Block
-  m_TagString: Block
+  m_TagString: Gold
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

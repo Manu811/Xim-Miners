@@ -29,9 +29,16 @@ public class Menu : MonoBehaviour
 
     public void Jugar()
     {
-        Debug.Log("Apretaste Jugar");
-        SceneManager.LoadScene("Xim-Miners");
-
+        NombraTuMinero();
+        if (nombre.Equals("") || nombre.Equals("Pon tu nombre"))
+        {
+            inputText.GetComponent<InputField>().text = "Pon tu nombre";
+        }
+        else
+        {
+            Debug.Log("Apretaste Jugar");
+            SceneManager.LoadScene("Xim-Miners");
+        }
     }
 
     public void NombraTuMinero()
